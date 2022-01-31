@@ -9,7 +9,7 @@ public class SingleLinkedList<T> implements LinkedListOperations<T> {
     private Node<T> headNode = null;
     private Node<T> tailNode = null;
 
-    static class Node<T> {
+    private static class Node<T> {
         private T data;
         private Node<T> nextNode;
 
@@ -140,8 +140,22 @@ public class SingleLinkedList<T> implements LinkedListOperations<T> {
     }
 
     @Override
-    public void printList() {
-        System.out.println(this);
+    public T get(int index) {
+        if (isEmpty())
+            throw new RuntimeException("Empty Linked List.");
+        if(index == 0)
+            return headNode.data;
+        if(index == getSize())
+            return tailNode.data;
+        Node<T> node = headNode;
+        for(int i=0; i<index-1; i++)
+            node = node.nextNode;
+        return node.data;
+    }
+
+    @Override
+    public int getSize() {
+        return size;
     }
 
     @Override
@@ -183,7 +197,7 @@ public class SingleLinkedList<T> implements LinkedListOperations<T> {
     }
 
     private boolean isEmpty() {
-        return this.size == 0;
+        return getSize() == 0;
     }
 
     private T remove(Node<T> node, Node<T> removeNode) {
@@ -196,9 +210,5 @@ public class SingleLinkedList<T> implements LinkedListOperations<T> {
         removeNode.data = null;
         --size;
         return data;
-    }
-
-    public int getSize(){
-        return size;
     }
 }

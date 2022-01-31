@@ -11,5 +11,6 @@ public interface LinkedListOperations<T> extends Iterable<T> {
     T removeAt (int index);
     T peekFirst();
     T peekLast();
-    void printList();
+    T get(int index);
+    int getSize();
 }

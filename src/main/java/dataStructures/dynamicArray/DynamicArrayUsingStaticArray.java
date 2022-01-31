@@ -5,11 +5,11 @@ import java.util.Iterator;
 public class DynamicArrayUsingStaticArray<T> implements DynamicArrayOperations<T> {
 
     private int capacity = 0;
-    private T[] dynamicArray = null;
+    private T[] dynamicArray;
     private int arrayLength = 0;
 
     public DynamicArrayUsingStaticArray() {
-        this(8);
+        this(16);
     }
 
     public DynamicArrayUsingStaticArray(int capacity) {

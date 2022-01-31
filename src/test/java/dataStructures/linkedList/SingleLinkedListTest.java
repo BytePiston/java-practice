@@ -2,6 +2,7 @@ package dataStructures.linkedList;
 
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class SingleLinkedListTest {
@@ -12,10 +13,10 @@ public class SingleLinkedListTest {
         singleLinkedList.addFirst(1);
         singleLinkedList.addLast(2);
         singleLinkedList.addLast(3);
-        assertTrue(singleLinkedList.peekFirst().equals(1));
-        assertTrue(singleLinkedList.peekLast().equals(3));
-        assertTrue(singleLinkedList.getSize() == (3));
-        assertTrue(singleLinkedList.toString().equals("[ 1 2 3 ]"));
+        assertEquals(singleLinkedList.peekFirst(), 1);
+        assertEquals(singleLinkedList.peekLast(), 3);
+        assertEquals(singleLinkedList.getSize(), 3);
+        assertEquals(singleLinkedList.toString(), "[ 1 2 3 ]");
     }
 
     @Test
@@ -27,10 +28,10 @@ public class SingleLinkedListTest {
         singleLinkedListStr.addLast("c");
         singleLinkedListStr.addLast("d");
         singleLinkedListStr.addLast("e");
-        assertTrue(singleLinkedListStr.peekFirst().equals("a"));
-        assertTrue(singleLinkedListStr.peekLast().equals("e"));
-        assertTrue(singleLinkedListStr.getSize() == (6));
-        assertTrue(singleLinkedListStr.toString().equals("[ a str b c d e ]"));
+        assertEquals(singleLinkedListStr.peekFirst(), "a");
+        assertEquals(singleLinkedListStr.peekLast(), "e");
+        assertEquals(singleLinkedListStr.getSize(), 6);
+        assertEquals(singleLinkedListStr.toString(), "[ a str b c d e ]");
     }
 
     @Test
@@ -39,12 +40,12 @@ public class SingleLinkedListTest {
         singleLinkedList.addFirst(1);
         singleLinkedList.addLast(2);
         singleLinkedList.addLast(3);
-        assertTrue(singleLinkedList.getSize() == (3));
-        assertTrue(singleLinkedList.removeLast().equals(3));
-        assertTrue(singleLinkedList.getSize() == (2));
-        assertTrue(singleLinkedList.toString().equals("[ 1 2 ]"));
-        assertTrue(singleLinkedList.remove(1).equals(1));
-        assertTrue(singleLinkedList.getSize() == (1));
-        assertTrue(singleLinkedList.toString().equals("[ 2 ]"));
+        assertEquals(singleLinkedList.getSize(), 3);
+        assertEquals(singleLinkedList.removeLast(), 3);
+        assertEquals(singleLinkedList.getSize(),2);
+        assertEquals(singleLinkedList.toString(), "[ 1 2 ]");
+        assertEquals(singleLinkedList.remove(1), 1);
+        assertEquals(singleLinkedList.getSize(), 1);
+        assertEquals(singleLinkedList.toString(), "[ 2 ]");
     }
 }

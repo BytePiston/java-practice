@@ -30,7 +30,7 @@ public class StaticArrayStack<T> implements StackOperations<T> {
         if (top == -1) {
             throw new EmptyStackException();
         }
-        return stack[--top];
+        return stack[top--];
     }
 
     @Override
@@ -48,16 +48,17 @@ public class StaticArrayStack<T> implements StackOperations<T> {
 
     @Override
     public int size() {
-        return top+1;
+        return top + 1;
     }
 
     @Override
     public Iterator<T> iterator() {
         return new Iterator<T>() {
             int i = 0;
+
             @Override
             public boolean hasNext() {
-                return stack[i] != null;
+                return i<capacity;
             }
 
             @Override
@@ -68,9 +69,20 @@ public class StaticArrayStack<T> implements StackOperations<T> {
             }
 
             @Override
-            public void remove(){
+            public void remove() {
                 throw new UnsupportedOperationException("Method Not Supported.");
             }
         };
+    }
+
+    @Override
+    public String toString() {
+        if (isEmpty())
+            return "[ ]";
+        Iterator<T> iterator = this.iterator();
+        StringBuffer sb = new StringBuffer().append("[ ");
+        while (iterator.hasNext())
+            sb.append(iterator.next() + " ");
+        return sb.append("]").toString();
     }
 }

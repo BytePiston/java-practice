@@ -3,7 +3,7 @@ package dataStructures.dynamicArray;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class DynamicArrayUsingStaticArrayTest {
 
@@ -12,7 +12,7 @@ public class DynamicArrayUsingStaticArrayTest {
         DynamicArrayUsingStaticArray<Integer> dynamicArray = new DynamicArrayUsingStaticArray<>();
         dynamicArray.add(1);
         dynamicArray.add(2);
-        assertTrue(dynamicArray.toString().equals("[ 1 2 ]"));
+        assertEquals(dynamicArray.toString(), "[ 1 2 ]");
     }
 
     @Test
@@ -20,23 +20,23 @@ public class DynamicArrayUsingStaticArrayTest {
         DynamicArrayUsingStaticArray<String> dynamicArray = new DynamicArrayUsingStaticArray<>();
         dynamicArray.add("apple");
         dynamicArray.add("banana");
-        assertTrue(dynamicArray.toString().equals("[ apple banana ]"));
+        assertEquals(dynamicArray.toString(), "[ apple banana ]");
     }
 
     @Test
     public void testAddDynamicSize(){
-        DynamicArrayUsingStaticArray<Integer> dynamicArray = new DynamicArrayUsingStaticArray<>(3);
+        DynamicArrayUsingStaticArray<Integer> dynamicArray = new DynamicArrayUsingStaticArray<>(2);
         dynamicArray.add(1);
         dynamicArray.add(2);
         dynamicArray.add(3);
         dynamicArray.add(4);
         dynamicArray.add(5);
-        assertTrue(dynamicArray.toString().equals("[ 1 2 3 4 5 ]"));
-        assertTrue(dynamicArray.removeLast().equals(5));
-        assertTrue(dynamicArray.getSize() == 4 );
-        assertTrue(dynamicArray.remove(1).equals(1));
-        assertTrue(dynamicArray.getSize() == 3 );
-        assertTrue(dynamicArray.toString().equals("[ 2 3 4 ]"));
+        assertEquals(dynamicArray.toString(), "[ 1 2 3 4 5 ]");
+        assertEquals(dynamicArray.removeLast(), 5);
+        assertEquals(dynamicArray.getSize(), 4 );
+        assertEquals(dynamicArray.remove(1), 1);
+        assertEquals(dynamicArray.getSize(), 3 );
+        assertEquals(dynamicArray.toString(), "[ 2 3 4 ]");
     }
 
     @Test
@@ -44,11 +44,11 @@ public class DynamicArrayUsingStaticArrayTest {
         Integer[] staticArray = new Integer[]{1,2,3};
         DynamicArrayUsingStaticArray<Integer> dynamicArray = new DynamicArrayUsingStaticArray<>(staticArray.length);
         dynamicArray.addAll(staticArray);
-        assertTrue(dynamicArray.getSize() == 3 );
-        assertTrue(dynamicArray.toString().equals("[ 1 2 3 ]"));
+        assertEquals(dynamicArray.getSize(), 3 );
+        assertEquals(dynamicArray.toString(), "[ 1 2 3 ]");
         dynamicArray.add(4);
         dynamicArray.add(5);
-        assertTrue(dynamicArray.getSize() == 5 );
-        assertTrue(dynamicArray.toString().equals("[ 1 2 3 4 5 ]"));
+        assertEquals(dynamicArray.getSize(), 5 );
+        assertEquals(dynamicArray.toString(), "[ 1 2 3 4 5 ]");
     }
 }

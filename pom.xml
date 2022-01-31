@@ -10,9 +10,9 @@
     </parent>
     <groupId>org.study.cactus</groupId>
     <artifactId>java-practice</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
     <name>java-practice</name>
-    <description>Demo project for Spring Boot</description>
+    <description>Practice project for Data Structures and Algorithms and Interview Java Problems.</description>
     <properties>
         <java.version>11</java.version>
     </properties>

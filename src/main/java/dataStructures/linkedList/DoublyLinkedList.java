@@ -45,7 +45,7 @@ public class DoublyLinkedList<T> implements LinkedListOperations<T> {
     }
 
     private boolean isEmpty() {
-        return this.size == 0;
+        return getSize() == 0;
     }
 
     @Override
@@ -198,8 +198,22 @@ public class DoublyLinkedList<T> implements LinkedListOperations<T> {
     }
 
     @Override
-    public void printList() {
-        System.out.println(this);
+    public T get(int index) {
+        if (isEmpty())
+            throw new RuntimeException("Empty Linked List.");
+        if(index == 1)
+            return headNode.data;
+        if(index == size)
+            return tailNode.data;
+        Node<T> node = headNode;
+        for(int i=0; i<index-1; i++)
+            node = node.nextNode;
+        return node.data;
+    }
+
+    @Override
+    public int getSize() {
+        return size;
     }
 
     @Override
