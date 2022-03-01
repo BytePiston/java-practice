@@ -36,5 +36,10 @@ public class StaticArrayCircularQueueTest {
         assertEquals(queue.poll(), "apple");
         assertEquals(queue.size(), 2);
         assertEquals(queue.peek(), "banana");
+        assertEquals(queue.poll(), "banana");
+        queue.offer("grapes");
+        assertEquals(queue.peek(), "orange");
+        assertEquals(queue.poll(), "orange");
+        assertEquals(queue.peek(), "grapes");
     }
 }
