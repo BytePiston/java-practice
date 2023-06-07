@@ -22,51 +22,51 @@ import java.util.HashMap;
 
 public class Fibonacci {
 
-    /*
-     * @param -> Any positive natural number for which we required Fibonacci number.
-     * @return -> Returns the Fibonacci number of requested number.
-     *
-     * Time Complexity -> O(2^n)
-     * Space Complexity -> O(n) i.e Height of the Tree.
-     */
-    public long fibonacci(int n) {
-        if (n <= 0)
-            throw new IllegalArgumentException("Negative numbers are not allowed!!!");
-        if (n <= 2)
-            return 1;
-        return fibonacci(n - 1) + fibonacci(n - 2);
-    }
+  /*
+   * @param -> Any positive natural number for which we required Fibonacci number.
+   * @return -> Returns the Fibonacci number of requested number.
+   *
+   * Time Complexity -> O(2^n)
+   * Space Complexity -> O(n) i.e Height of the Tree.
+   */
+  public long fibonacci(int n) {
+    if (n <= 0)
+      throw new IllegalArgumentException("Negative numbers are not allowed!!!");
+    if (n <= 2)
+      return 1;
+    return fibonacci(n - 1) + fibonacci(n - 2);
+  }
 
-    /*
-     * To Reduce the Time complexity from O(2^n) to O(n) we will use Memoization Technique to store the fibonacci number of
-     * common elements from both fib(n-1) and fib(n-2) tree to reduce computation for already visited natural number in the sequence.
-     *
-     * @param -> Any positive natural number for which we required Fibonacci number.
-     * @return -> Returns the Fibonacci number of requested number.
-     *
-     * Time Complexity -> O(n)
-     * Space Complexity -> O(n) i.e Height of the Tree.
-     */
-    public long memoizationFibonacci(int n, HashMap<Integer, Long> memo) {
-        if (n <= 0)
-            throw new IllegalArgumentException("Negative numbers are not allowed!!!");
-        if (memo.containsKey(n))
-            return memo.get(n);
-        if (n <= 2)
-            return 1;
-        memo.put(n, memoizationFibonacci(n - 1, memo) + memoizationFibonacci(n - 2, memo));
-        return memo.get(n);
-    }
+  /*
+   * To Reduce the Time complexity from O(2^n) to O(n) we will use Memoization Technique to store the fibonacci number of
+   * common elements from both fib(n-1) and fib(n-2) tree to reduce computation for already visited natural number in the sequence.
+   *
+   * @param -> Any positive natural number for which we required Fibonacci number.
+   * @return -> Returns the Fibonacci number of requested number.
+   *
+   * Time Complexity -> O(n)
+   * Space Complexity -> O(n) i.e Height of the Tree.
+   */
+  public long memoizationFibonacci(int n, HashMap<Integer, Long> memo) {
+    if (n <= 0)
+      throw new IllegalArgumentException("Negative numbers are not allowed!!!");
+    if (memo.containsKey(n))
+      return memo.get(n);
+    if (n <= 2)
+      return 1;
+    memo.put(n, memoizationFibonacci(n - 1, memo) + memoizationFibonacci(n - 2, memo));
+    return memo.get(n);
+  }
 
-    public long computeTimeFibonacci(int n) {
-        long startTime = Calendar.getInstance().getTimeInMillis();
-        fibonacci(n);
-        return Calendar.getInstance().getTimeInMillis() - startTime;
-    }
+  public long computeTimeFibonacci(int n) {
+    long startTime = Calendar.getInstance().getTimeInMillis();
+    fibonacci(n);
+    return Calendar.getInstance().getTimeInMillis() - startTime;
+  }
 
-    public long computeTimeMemoizationFibonacci(int n) {
-        long startTime = Calendar.getInstance().getTimeInMillis();
-        memoizationFibonacci(n, new HashMap<>());
-        return Calendar.getInstance().getTimeInMillis() - startTime;
-    }
+  public long computeTimeMemoizationFibonacci(int n) {
+    long startTime = Calendar.getInstance().getTimeInMillis();
+    memoizationFibonacci(n, new HashMap<>());
+    return Calendar.getInstance().getTimeInMillis() - startTime;
+  }
 }

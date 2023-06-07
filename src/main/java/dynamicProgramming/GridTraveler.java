@@ -76,36 +76,37 @@ import java.util.Map;
 
 public class GridTraveler {
 
-    public long gridTraveler(int m, int n) {
-        if (m == 0 || n == 0)
-            return 0;
-        if (m == 1 && n == 1)
-            return 1;
-        return gridTraveler(m - 1, n) + gridTraveler(m, n - 1);
-    }
+  public long gridTraveler(int m, int n) {
+    if (m == 0 || n == 0)
+      return 0;
+    if (m == 1 && n == 1)
+      return 1;
+    return gridTraveler(m - 1, n) + gridTraveler(m, n - 1);
+  }
 
-    public long memoizationGridTraveler(int m, int n, Map<String, Long> memo) {
-        if (m == 0 || n == 0)
-            return 0;
-        if (m == 1 && n == 1)
-            return 1;
-        if (memo.containsKey(m + "," + n))
-            return memo.get(m + "," + n);
-        else if (memo.containsKey(n + "," + m))
-            return memo.get(n + "," + m);
-        memo.put(m + "," + n, memoizationGridTraveler(m - 1, n, memo) + memoizationGridTraveler(m, n - 1, memo));
-        return memo.get(m + "," + n);
-    }
+  public long memoizationGridTraveler(int m, int n, Map<String, Long> memo) {
+    if (m == 0 || n == 0)
+      return 0;
+    if (m == 1 && n == 1)
+      return 1;
+    if (memo.containsKey(m + "," + n))
+      return memo.get(m + "," + n);
+    else if (memo.containsKey(n + "," + m))
+      return memo.get(n + "," + m);
+    memo.put(m + "," + n,
+        memoizationGridTraveler(m - 1, n, memo) + memoizationGridTraveler(m, n - 1, memo));
+    return memo.get(m + "," + n);
+  }
 
-    public long computeTimeGridTraveler(int m, int n) {
-        long startTime = Calendar.getInstance().getTimeInMillis();
-        gridTraveler(m, n);
-        return Calendar.getInstance().getTimeInMillis() - startTime;
-    }
+  public long computeTimeGridTraveler(int m, int n) {
+    long startTime = Calendar.getInstance().getTimeInMillis();
+    gridTraveler(m, n);
+    return Calendar.getInstance().getTimeInMillis() - startTime;
+  }
 
-    public long computeTimeMemoizationGridTraveler(int m, int n) {
-        long startTime = Calendar.getInstance().getTimeInMillis();
-        memoizationGridTraveler(m, n, new HashMap<>());
-        return Calendar.getInstance().getTimeInMillis() - startTime;
-    }
+  public long computeTimeMemoizationGridTraveler(int m, int n) {
+    long startTime = Calendar.getInstance().getTimeInMillis();
+    memoizationGridTraveler(m, n, new HashMap<>());
+    return Calendar.getInstance().getTimeInMillis() - startTime;
+  }
 }
