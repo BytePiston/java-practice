@@ -1,6 +1,7 @@
 package dynamicProgramming;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
@@ -38,7 +39,7 @@ public class GridTravelerTest {
   public void testCompareTimeComplexity() {
     GridTraveler gridTraveler = new GridTraveler();
     long computeTimeGridTraveler = gridTraveler.computeTimeGridTraveler(9, 9);
-    long computeTimeMemoizationGridTraveler = gridTraveler.computeTimeMemoizationGridTraveler(18,
+    long computeTimeMemoizationGridTraveler = gridTraveler.computeTimeMemoizedGridTraveler(18,
         18);
     System.out.println("Time Taken by Normal Recursion approach: " + computeTimeGridTraveler);
     System.out.println("Time Taken by Memoization approach: " + computeTimeMemoizationGridTraveler);
