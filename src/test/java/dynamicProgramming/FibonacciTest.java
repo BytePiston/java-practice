@@ -33,13 +33,10 @@ public class FibonacciTest {
    * Input for the Memoization approach-> 50; Time Taken to Compute: ~ < 1 milliseconds
    */
 
-/*  @Test
+  @Test
   public void testCompareTimeComplexity() {
     Fibonacci fibonacci = new Fibonacci();
-    long computeTimeFibonacci = fibonacci.computeTimeFibonacci(30);
-    long computeTimeMemoizationFibonacci = fibonacci.computeTimeMemoizedFibonacci(50);
-    System.out.println("Time Taken by Normal Recursion approach: " + computeTimeFibonacci);
-    System.out.println("Time Taken by Memoization approach: " + computeTimeMemoizationFibonacci);
-    assertTrue(computeTimeMemoizationFibonacci < computeTimeFibonacci);
-  }*/
+    Fibonacci memoizedFibonacci = new Fibonacci();
+    assertTrue(memoizedFibonacci.computeTimeMemoizedFibonacci(50) < fibonacci.computeTimeFibonacci(35));
+  }
 }

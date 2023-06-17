@@ -6,6 +6,10 @@ import java.util.Map;
 import java.util.Set;
 
 /**
+ * https://leetcode.com/discuss/interview-question/algorithms/285144/interview-question-minimize-the-distance-to-the-farthest-point
+ * <p>
+ * https://medium.com/@samjingwen/path-to-becoming-an-algorithm-guru-2-apartment-location-optimisation-6b1ab7f1034d
+ * <p>
  * Assume you're looking to move, and have a set of amenities that you want to have easy access to from your new home.
  * You have found a neighborhood you like, each block of which has zero or more amenities.
  * How would you pick the block to live in such that the farthest distance to any amenity in your list is minimized?
