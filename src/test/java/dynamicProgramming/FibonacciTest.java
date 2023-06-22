@@ -1,6 +1,7 @@
 package dynamicProgramming;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.HashMap;
 import org.junit.jupiter.api.Test;
@@ -17,9 +18,9 @@ public class FibonacciTest {
   @Test
   public void testFibWithMemoization() {
     Fibonacci fibonacci = new Fibonacci();
-    System.out.println(fibonacci.memoizationFibonacci(50, new HashMap<>()));
-    assertEquals(fibonacci.memoizationFibonacci(7, new HashMap<>()), 13);
-    assertEquals(fibonacci.memoizationFibonacci(13, new HashMap<>()), 233);
+    System.out.println(fibonacci.memoizedFibonacci(50, new HashMap<>()));
+    assertEquals(fibonacci.memoizedFibonacci(7, new HashMap<>()), 13);
+    assertEquals(fibonacci.memoizedFibonacci(13, new HashMap<>()), 233);
 
   }
 
@@ -32,13 +33,10 @@ public class FibonacciTest {
    * Input for the Memoization approach-> 50; Time Taken to Compute: ~ < 1 milliseconds
    */
 
- /* @Test
+  @Test
   public void testCompareTimeComplexity() {
     Fibonacci fibonacci = new Fibonacci();
-    long computeTimeFibonacci = fibonacci.computeTimeFibonacci(30);
-    long computeTimeMemoizationFibonacci = fibonacci.computeTimeMemoizationFibonacci(50);
-    System.out.println("Time Taken by Normal Recursion approach: " + computeTimeFibonacci);
-    System.out.println("Time Taken by Memoization approach: " + computeTimeMemoizationFibonacci);
-    assertTrue(computeTimeMemoizationFibonacci < computeTimeFibonacci);
-  }*/
+    Fibonacci memoizedFibonacci = new Fibonacci();
+    assertTrue(memoizedFibonacci.computeTimeMemoizedFibonacci(50) < fibonacci.computeTimeFibonacci(35));
+  }
 }
