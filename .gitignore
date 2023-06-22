@@ -2,3 +2,12 @@
 /target/*
 !/.idea/*
 !/.github/*
+/.idea/compiler.xml
+/.idea/sonarlint/issuestore/index.pb
+/.idea/jarRepositories.xml
+/.idea/java-practice.iml
+/.github/workflows/maven.yml
+/.idea/misc.xml
+/.idea/runConfigurations.xml
+/.idea/vcs.xml
+/.idea/workspace.xml
