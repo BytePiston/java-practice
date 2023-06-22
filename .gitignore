@@ -1,3 +1,4 @@
 /java-practice.iml
 /target/
-/.idea/
+!/.idea/
+!/.github/
