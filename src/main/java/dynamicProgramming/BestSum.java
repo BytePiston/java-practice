@@ -67,7 +67,7 @@ public class BestSum {
      * Space Complexity -> O(m^2)
      */
     public List<Integer> memoizedBestSum(int targetSum, int[] numbers, Map<Integer, List<Integer>> memo) {
-        if(memo.containsKey(targetSum) && memo.get(targetSum) != null)
+        if(memo.containsKey(targetSum) )
             return memo.get(targetSum);
         if (targetSum == 0)
             return new ArrayList<>();
