@@ -36,7 +36,17 @@ public class CanSumTest {
         assertTrue(canSumObj.memoizedCanSum(7, new int[]{5,3,4,7}, new HashMap<>()));
         assertFalse(canSumObj.memoizedCanSum(7, new int[]{2,4}, new HashMap<>()));
         assertTrue(canSumObj.memoizedCanSum(8, new int[]{2,3,5}, new HashMap<>()));
-        assertFalse(canSumObj.canSum(300, new int[]{7,14}));
+        assertFalse(canSumObj.memoizedCanSum(300, new int[]{7,14}, new HashMap<>()));
+    }
+
+    @Test
+    public void testTabulizedCanSum(){
+        CanSum canSum = new CanSum();
+        assertTrue(canSum.tabulizedCanSum(7, new int[]{2,3}));
+        assertTrue(canSum.tabulizedCanSum(7, new int[]{5,3,4,7}));
+        assertFalse(canSum.tabulizedCanSum(7, new int[]{2,4}));
+        assertTrue(canSum.tabulizedCanSum(8, new int[]{2,3,5}));
+        assertFalse(canSum.tabulizedCanSum(300, new int[]{7,14}));
     }
 
  /*   @Test

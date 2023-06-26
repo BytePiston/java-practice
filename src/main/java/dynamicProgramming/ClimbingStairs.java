@@ -2,6 +2,8 @@ package dynamicProgramming;
 
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Problem Statement: Spinoff of Fibonacci Sequence.
@@ -27,8 +29,12 @@ import java.util.Arrays;
  * 3. 2 steps + 1 step
  */
 public class ClimbingStairs {
-    public int climbStairs(int n) {
-        int[] moves = {1, 2};
+    int[] moves = {1, 2};
+
+    /**
+     * Approach 3: Using Tabulation.
+     */
+    public int memoizedClimbStairs(int n) {
         int[] memo = new int[n + 1];
         Arrays.fill(memo, -1);
         memo[0] = 1;
@@ -52,20 +58,31 @@ public class ClimbingStairs {
     /**
      * Approach 2: Treat this as a spinoff of Fibonacci Series.
      */
-    /*private int climbStairs(int n, Map<Integer, Integer> memo) {
+    private int climbStairsUsingFib(int n, Map<Integer, Integer> memo) {
         if (memo.containsKey(n)) {
             return memo.get(n);
         }
-        memo.put(n, climbStairs(n - 1, memo) + climbStairs(n - 2, memo));
+        memo.put(n, climbStairsUsingFib(n - 1, memo) + climbStairsUsingFib(n - 2, memo));
         return memo.get(n);
     }
 
-    public int climbStairs(int n) {
+    public int climbStairsUsingFib(int n) {
         Map<Integer, Integer> memo = new HashMap<>();
         memo.put(1, 1);
         memo.put(2, 2);
-        return climbStairs(n, memo);
-    }*/
+        return climbStairsUsingFib(n, memo);
+    }
 
-
+    /**
+     * Approach 3: Using Tabulation.
+     */
+    public int tabulizedClimbStairs(int n) {
+        int[] tab = new int[n+1];
+        tab[0] = 1;
+        for(int i=0; i<n; i++)
+            for(int move: moves)
+                if(i+move<=n)
+                    tab[i+move]+=tab[i];
+        return tab[n];
+    }
 }

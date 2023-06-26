@@ -18,12 +18,27 @@ public class FibonacciTest {
   @Test
   public void testFibWithMemoization() {
     Fibonacci fibonacci = new Fibonacci();
-    System.out.println(fibonacci.memoizedFibonacci(50, new HashMap<>()));
+    assertEquals(fibonacci.memoizedFibonacci(50, new HashMap<>()),12586269025L);
     assertEquals(fibonacci.memoizedFibonacci(7, new HashMap<>()), 13);
     assertEquals(fibonacci.memoizedFibonacci(13, new HashMap<>()), 233);
 
   }
 
+  @Test
+  public void testFibWithTabulation() {
+    Fibonacci fibonacci = new Fibonacci();
+    assertEquals(fibonacci.tabulizedFibonacci(50),12586269025L);
+    assertEquals(fibonacci.tabulizedFibonacci(7), 13);
+    assertEquals(fibonacci.tabulizedFibonacci(13), 233);
+  }
+
+  @Test
+  public void testFibWithSingleIteration() {
+    Fibonacci fibonacci = new Fibonacci();
+    assertEquals(fibonacci.fibonacciSingleIteration(50),12586269025L);
+    assertEquals(fibonacci.fibonacciSingleIteration(7), 13);
+    assertEquals(fibonacci.fibonacciSingleIteration(13), 233);
+  }
 
   /*
    * Test Case proving:

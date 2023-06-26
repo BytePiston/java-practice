@@ -67,7 +67,7 @@ public class BestSum {
      * Space Complexity -> O(m^2)
      */
     public List<Integer> memoizedBestSum(int targetSum, int[] numbers, Map<Integer, List<Integer>> memo) {
-        if(memo.containsKey(targetSum) )
+        if (memo.containsKey(targetSum))
             return memo.get(targetSum);
         if (targetSum == 0)
             return new ArrayList<>();
@@ -86,5 +86,40 @@ public class BestSum {
         }
         memo.put(targetSum, bestPath);
         return bestPath;
+    }
+
+    /**
+     * @param targetSum -> The number for which computation will be performed.
+     * @param numbers   -> Array of numbers which will be used to check the targetSum.
+     * @return -> Returns array of the best path which is the shortest path to form targetSum number by adding any element from given array.
+     * Returns Null if targetSum number can not be formed.
+     * Approach 3: We will create a tab array with size targetSum+1 of List<Integer> type and with initial value as Null.
+     * For each index of the array it represents whether it is possible to create that number using given numbers array.
+     * Example: Value at index 1 be it Null or List of Integers represents whether we can create that number using values from numbers array.
+     * and then we will update arr[0] to Empty List [], since it is our base case where we can always create 0 as we will not need to pick any elements
+     * from the numbers array. We will have 2 loops 1 outer loop which will loop through all the indexes of tab array
+     * and 1 inner loop which will iterate through all the elements of the numbers array.
+     * <p>
+     * m --> targetSum
+     * n --> number of element in array
+     * Time Complexity -> O(n*m)
+     * Space Complexity -> O(m)
+     */
+    public List<Integer> tabulizedBestSum(int targetSum, int[] numbers) {
+        List<Integer>[] tab = (List<Integer>[]) new ArrayList[targetSum + 1];
+        tab[0] = new ArrayList<>();
+        for (int i = 0; i <= targetSum; i++) {
+            if (tab[i] != null) {
+                for (int num : numbers) {
+                    if (i + num <= targetSum) {
+                        List<Integer> newList = new ArrayList<>(tab[i]);
+                        newList.add(num);
+                        if(tab[i+num] == null || tab[i+num].size() >= newList.size())
+                            tab[i+num] = newList;
+                    }
+                }
+            }
+        }
+        return tab[targetSum];
     }
 }

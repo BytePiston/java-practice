@@ -18,13 +18,23 @@ public class GridTravelerTest {
     }
 
     @Test
-    public void testMemoizationGridTraveler() {
+    public void testMemoizedGridTraveler() {
         GridTraveler gridTraveler = new GridTraveler();
         assertEquals(gridTraveler.gridTraveler(1, 1), 1);
         assertEquals(gridTraveler.gridTraveler(2, 3), 3);
         assertEquals(gridTraveler.gridTraveler(3, 2), 3);
         assertEquals(gridTraveler.gridTraveler(3, 3), 6);
         assertEquals(gridTraveler.gridTraveler(15, 15), 40116600);
+    }
+
+    @Test
+    public void testTabulizedGridTraveler() {
+        GridTraveler gridTraveler = new GridTraveler();
+        assertEquals(gridTraveler.tabulizedGridTraveler(1, 1), 1);
+        assertEquals(gridTraveler.tabulizedGridTraveler(2, 3), 3);
+        assertEquals(gridTraveler.tabulizedGridTraveler(3, 2), 3);
+        assertEquals(gridTraveler.tabulizedGridTraveler(3, 3), 6);
+        assertEquals(gridTraveler.tabulizedGridTraveler(15, 15), 40116600);
     }
 
     /*
