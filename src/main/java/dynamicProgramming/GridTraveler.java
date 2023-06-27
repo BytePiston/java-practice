@@ -98,6 +98,34 @@ public class GridTraveler {
         return memo.get(m + "," + n);
     }
 
+    /**
+     * Solution Approach 3 Using Tabulations:
+     * <p>
+     * We will initiate the (n+1)x(m+1) matrix with default value 0. where m is numbers of rows and n is number of columns.
+     * As we know that for 1X1 matrix the number of moves required to solve is 1. So we will update (1,1) ->1 (Base Case).
+     * after this we will start iterating over the matrix and update i index element's right cell and bottom cell and increment their value by value at i index.
+     * This will reduce overall time complexity.
+     * <p>
+     * NOTE:  gridTraveler(m,n) = gridTraveler(n,m)
+     * <p>
+     * Time Complexity: O(m*n)
+     * Space Complexity: O(m+n) i.e Height of the Tree.
+     */
+    public long tabulizedGridTraveler(int m, int n) {
+        long[][] tab = new long[m + 1][n + 1];
+        tab[1][1] = 1;
+        for (int i = 0; i <= m; i++) {
+            for (int j = 0; j <= n; j++) {
+                long val = tab[i][j];
+                if (j + 1 <= n)
+                    tab[i][j + 1] += val;
+                if (i + 1 <= m)
+                    tab[i + 1][j] += val;
+            }
+        }
+        return tab[m][n];
+    }
+
     public long computeTimeGridTraveler(int m, int n) {
         long startTime = Calendar.getInstance().getTimeInMillis();
         gridTraveler(m, n);

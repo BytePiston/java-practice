@@ -1,6 +1,8 @@
 package dynamicProgramming;
 
-import java.util.*;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Problem Statement:
@@ -74,6 +76,37 @@ public class CanSum {
         }
         memo.put(targetSum, false);
         return false;
+    }
+
+    /**
+     * @param targetSum -> The number for which computation will be performed.
+     * @param numbers   -> Array of numbers which will be used to check the targetSum.
+     * @return -> Returns True if targetSum number can be formed by adding any element from given array.
+     * Returns False if targetSum number can not be formed.
+     * Approach 3: We will create a tab array with size targetSum+1 of boolean type and with initial value as False.
+     * For each index of the array it represents whether it is possible to create that number using given numbers array.
+     * Example: Value at index 1 be it True/False represents whether we can create that number using values from numbers array.
+     * and then we will update arr[0] to True since it is our base case where we can always create 0 as we will not need to pick any elements
+     * from the numbers array. We will have 2 loops 1 outer loop which will loop through all the indexes of tab array
+     * and 1 inner loop which will iterate through all the elements of the numbers array.
+     * <p>
+     * m --> targetSum
+     * n --> number of element in array
+     * Time Complexity -> O(n*m)
+     * Space Complexity -> O(m)
+     */
+    public boolean tabulizedCanSum(int targetSum, int[] numbers) {
+        boolean[] tab = new boolean[targetSum + 1];
+        tab[0] = true;
+        for (int i = 0; i < targetSum; i++) {
+            if (tab[i]) {
+                for (int num : numbers) {
+                    if (i + num <= targetSum)
+                        tab[i + num] = tab[i];
+                }
+            }
+        }
+        return tab[targetSum];
     }
 
     public long computeTimeCanSum(int targetSum, int[] numbers) {
