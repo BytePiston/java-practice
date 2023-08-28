@@ -1,6 +1,7 @@
 package dynamic_programming;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
@@ -37,7 +38,7 @@ public class AllConstruct {
     }
 
     public List<List<String>> memoizedAllConstruct(String target, String[] wordBank, Map<String, List<List<String>>> memo) {
-        if(memo.containsKey(target))
+        if (memo.containsKey(target))
             return memo.get(target);
         if (target.isEmpty()) {
             List<List<String>> emptyList = new ArrayList<>();
@@ -48,7 +49,7 @@ public class AllConstruct {
         for (String word : wordBank) {
             if (target.indexOf(word) == 0) {
                 List<List<String>> suffixPaths = memoizedAllConstruct(target.substring(word.length()), wordBank, memo);
-                for(List<String> path : suffixPaths){
+                for (List<String> path : suffixPaths) {
                     List<String> suffixPath = new ArrayList<>(path);
                     suffixPath.add(0, word);
                     allPaths.add(suffixPath);
@@ -57,5 +58,30 @@ public class AllConstruct {
         }
         memo.put(target, allPaths);
         return allPaths;
+    }
+
+
+    public List<List<Integer>> combinationSum(int[] candidates, int target) {
+        List<List<Integer>> result = new ArrayList<>();
+        if (target < 0)
+            return null;
+        if (target == 0){
+            List<List<Integer>> emptyList = new ArrayList<>();
+            emptyList.add(new ArrayList<>());
+            return emptyList;
+        }
+        List<List<Integer>> remainderResults;
+        for (int candidate : candidates) {
+            int remainder = target - candidate;
+            remainderResults = combinationSum(candidates, remainder);
+            if (remainderResults != null) {
+                for (List<Integer> remainderList : remainderResults){
+                    List<Integer> list1 = new ArrayList<>(remainderList);
+                    list1.add(0, candidate);
+                    result.add(list1);
+                }
+            }
+        }
+        return result;
     }
 }

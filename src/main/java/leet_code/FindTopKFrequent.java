@@ -18,12 +18,12 @@ import java.util.Queue;
  * Output: [1]
  */
 public class FindTopKFrequent {
-    public int[] topKFrequent(int[] nums, int k) {
+    public int[] topKFrequentMaxHeap(int[] nums, int k) {
         Map<Integer,Integer> map = new HashMap<>();
         for(int num: nums){
             map.merge(num, 1, Integer::sum);
         }
-        Queue<Integer> pq = new PriorityQueue<>((a, b) -> map.get(b) - map.get(a));
+        Queue<Integer> pq = new PriorityQueue<>((a, b) -> map.get(a) - map.get(b));
 
         for(Integer key: map.keySet()){
             pq.offer(key);
@@ -34,6 +34,32 @@ public class FindTopKFrequent {
             output[i] = pq.poll();
         return output;
     }
+
+    public int[] topKFrequentMinHeap(int[] nums, int k) {
+        Map<Integer,Integer> map = new HashMap<>();
+        for(int num: nums){
+            map.merge(num, 1, Integer::sum);
+        }
+        Queue<Integer> pq = new PriorityQueue<>((a, b) -> map.get(a) - map.get(b));
+
+        for(Integer key: map.keySet()){
+            if(pq.size() < k) pq.offer(key);
+            else{
+//                if(map.get(pq.top()) < map.get(key)){
+//                    pq.pop();
+//                    pq.offer(key);
+//                }
+
+            }
+
+        }
+
+        int[] output = new int[k];
+        for(int i=k-1; i>=0; i--)
+            output[i] = pq.poll();
+        return output;
+    }
+
     public int findKthLargest(int[] nums, int k) {
         Queue<Integer> pq = new PriorityQueue<>((a,b) -> b - a);
         for(int num: nums){

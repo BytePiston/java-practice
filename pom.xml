@@ -44,6 +44,19 @@
             <version>5.9.2</version>
             <scope>test</scope>
         </dependency>
+
+
+
+        <dependency>
+            <groupId>com.github.skjolber.nfc</groupId>
+            <artifactId>nfctools-core</artifactId>
+            <version>1.0.0</version> <!-- Use the appropriate version -->
+        </dependency>
+        <dependency>
+            <groupId>com.github.skjolber.nfc</groupId>
+            <artifactId>nfctools-ndef-wellknown</artifactId>
+            <version>1.0.0</version> <!-- Use the appropriate version -->
+        </dependency>
     </dependencies>
 
     <build>
