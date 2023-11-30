@@ -1,6 +1,7 @@
 package dynamic_programming;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -66,7 +67,13 @@ public class BestSum {
      * Time Complexity -> O(n*m^2)
      * Space Complexity -> O(m^2)
      */
-    public List<Integer> memoizedBestSum(int targetSum, int[] numbers, Map<Integer, List<Integer>> memo) {
+
+    public static void main(String[] args) {
+        System.out.println(memoizedBestSum(11, new int[]{1,2,5}, new HashMap<>()).size());
+    }
+
+
+    public static List<Integer> memoizedBestSum(int targetSum, int[] numbers, Map<Integer, List<Integer>> memo) {
         if (memo.containsKey(targetSum))
             return memo.get(targetSum);
         if (targetSum == 0)
