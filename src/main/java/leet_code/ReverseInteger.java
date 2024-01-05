@@ -1,4 +1,4 @@
-package Problems;
+package leet_code;
 
 class ReverseInteger {
     public static void main(String[] args) {
