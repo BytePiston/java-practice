@@ -12,6 +12,7 @@ public class SharedBuffer {
         sharedBuffer = new LinkedList<>();
         this.sharedBufferSize = sharedBufferSize;
     }
+
     public synchronized void produce(int item){
         System.out.println("Inside produce method.");
         while(sharedBuffer.size() == sharedBufferSize){
@@ -24,7 +25,7 @@ public class SharedBuffer {
         }
         sharedBuffer.add(item);
         System.out.println("Item: " + item + " added calling NotifyAll method for all consumer Threads");
-        notify();
+        notifyAll();
     }
     public synchronized void consume(){
         System.out.println("Inside consumer method.");
@@ -38,6 +39,6 @@ public class SharedBuffer {
         }
         int item = sharedBuffer.poll();
         System.out.println("Consumed Item: " + item + "  calling NotifyAll method for all producer Threads");
-        notify();
+        notifyAll();
     }
 }
