@@ -1,4 +1,4 @@
-package velocity_global.online;
+package vc.online;
 
 import java.time.LocalDate;
 import java.time.YearMonth;

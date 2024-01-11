@@ -1,6 +1,4 @@
-package velocity_global.interview;
-
-import java.util.Comparator;
+package vc.iv;
 
 public class Cities {
 

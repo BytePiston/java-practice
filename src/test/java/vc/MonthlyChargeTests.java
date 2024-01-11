@@ -1,10 +1,10 @@
-package velocity_global;
+package vc;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import velocity_global.online.Challenge;
-import velocity_global.online.Subscription;
-import velocity_global.online.User;
+import vc.online.Challenge;
+import vc.online.Subscription;
+import vc.online.User;
 
 import java.time.LocalDate;
 

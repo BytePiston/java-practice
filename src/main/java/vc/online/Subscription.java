@@ -1,4 +1,4 @@
-package velocity_global.online;
+package vc.online;
 
 public class Subscription {
     public int id;
